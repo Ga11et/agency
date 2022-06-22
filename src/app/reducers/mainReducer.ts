@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { itemType } from "../models";
+import { filterType, itemType } from "../models";
 import sofa from '../../assets/sofa.png'
 import keyboard from '../../assets/keyboard.png'
 import workMedia from '../../assets/workMedia.png'
@@ -13,7 +13,7 @@ import sport from '../../assets/sport.png'
 const initialItems = () => ([
     { id: Date(), image: sofa, name: 'SOFA', type: 'Design' },
     { id: Date()+1, image: keyboard, name: 'KeyBoard', type: 'Branding' },
-    { id: Date()+2, image: workMedia, name: 'Work Media', type: 'Illustration' },
+    { id: Date()+2, image: workMedia, name: 'Work Media', type: 'Illustrations' },
     { id: Date()+3, image: dddone, name: 'DDDone', type: 'Motion' },
     { id: Date()+4, image: abstract, name: 'Abstract', type: 'Design' },
     { id: Date()+5, image: handP, name: 'HandP', type: 'Branding' },
@@ -24,12 +24,14 @@ const initialItems = () => ([
 
 type MainReducerInitialValuesType = {
     items: itemType[]
-    active: string
+    activeItem: string,
+    activeFilter: filterType
 }
 
 const initialState: MainReducerInitialValuesType = {
     items: initialItems(),
-    active: '2'
+    activeItem: '',
+    activeFilter: 'Show All'
 }
 
 export const MainReducer = createSlice({
@@ -37,10 +39,16 @@ export const MainReducer = createSlice({
     initialState,
     reducers: {
         setActive: (state, action: PayloadAction<string>) => {
-            state.active = action.payload
+            state.activeItem = action.payload
         },
         fetchMoreItems: (state, action: PayloadAction) => {
             state.items = [...state.items, ...initialItems()]
+        },
+        setFilter: (state, action: PayloadAction<filterType>) => {
+            state.activeFilter = action.payload
+        },
+        deleteItem: (state, action: PayloadAction) => {
+            state.items = state.items.filter(el => el.id !== state.activeItem)
         }
     },
 })

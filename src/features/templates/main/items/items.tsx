@@ -8,11 +8,17 @@ type ItemsPropsType = {
 }
 export const Items: FC<ItemsPropsType> = ({  }) => {
     
-    const { items } = useAppSelector(state => state.mainReducer)
+    const { items, activeFilter } = useAppSelector(state => state.mainReducer)
     
     return <>
         <div className={css.container}>
-            {items.map(el => <Item content={el} key={el.id} />)}
+            {items.map(el => {
+                return activeFilter === 'Show All'
+                ? <Item content={el} key={el.id} />
+                : el.type === activeFilter
+                    ? <Item content={el} key={el.id} />
+                    : null
+            })}
         </div>
     </>
 }

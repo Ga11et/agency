@@ -1,9 +1,10 @@
 import { Field } from "formik"
 import { FC } from "react"
+import { filterType } from "../../../../../app/models"
 import css from './radio.module.css'
 
 type RadioInputPropsType = {
-    text: string
+    text: filterType
     name: string
 
     formSubmitting: () => void

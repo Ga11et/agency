@@ -10,7 +10,7 @@ type ItemPropsType = {
 export const Item: FC<ItemPropsType> = ({ content }) => {
 
     const { id, image, name, type } = content
-    const { active } = useAppSelector(state => state.mainReducer)
+    const { activeItem } = useAppSelector(state => state.mainReducer)
     const dispatch = useAppDispatch()
 
     const onclickHandler = () => {
@@ -18,7 +18,7 @@ export const Item: FC<ItemPropsType> = ({ content }) => {
     }
 
     return <>
-        <div className={`${css.container} ${active === id ? css.active : ''}`}
+        <div className={`${css.container} ${activeItem === id ? css.active : ''}`}
             onClick={onclickHandler}
         >
             <img src={image} className={css.image} alt={name} />
