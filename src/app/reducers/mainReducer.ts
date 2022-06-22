@@ -10,17 +10,36 @@ import architect from '../../assets/architect.png'
 import calc from '../../assets/calc.png'
 import sport from '../../assets/sport.png'
 
-const initialItems = () => ([
-    { id: Date(), image: sofa, name: 'SOFA', type: 'Design' },
-    { id: Date()+1, image: keyboard, name: 'KeyBoard', type: 'Branding' },
-    { id: Date()+2, image: workMedia, name: 'Work Media', type: 'Illustrations' },
-    { id: Date()+3, image: dddone, name: 'DDDone', type: 'Motion' },
-    { id: Date()+4, image: abstract, name: 'Abstract', type: 'Design' },
-    { id: Date()+5, image: handP, name: 'HandP', type: 'Branding' },
-    { id: Date()+6, image: architect, name: 'Architect', type: 'Motion' },
-    { id: Date()+7, image: calc, name: 'CalC', type: 'Design' },
-    { id: Date()+8, image: sport, name: 'Sport', type: 'Branding' },
-])
+// Я не знаю как это сделать по-другому :(
+let count = 0
+const initialItems = () => {
+    if (count == 0) {
+        count++
+        return [
+            { id: Date(), image: sofa, name: 'SOFA', type: 'Design' },
+            { id: Date()+1, image: keyboard, name: 'KeyBoard', type: 'Branding' },
+            { id: Date()+2, image: workMedia, name: 'Work Media', type: 'Illustrations' },
+            { id: Date()+3, image: dddone, name: 'DDDone', type: 'Motion' },
+            { id: Date()+4, image: abstract, name: 'Abstract', type: 'Design' },
+            { id: Date()+5, image: handP, name: 'HandP', type: 'Branding' },
+            { id: Date()+6, image: architect, name: 'Architect', type: 'Motion' },
+            { id: Date()+7, image: calc, name: 'CalC', type: 'Design' },
+            { id: Date()+8, image: sport, name: 'Sport', type: 'Branding' },
+        ] as itemType[]
+    }
+    return [
+        { id: Date(), image: sofa, name: 'SOFA' + count, type: 'Design' },
+        { id: Date()+1, image: keyboard, name: 'KeyBoard' + count, type: 'Branding' },
+        { id: Date()+2, image: workMedia, name: 'Work Media' + count, type: 'Illustrations' },
+        { id: Date()+3, image: dddone, name: 'DDDone' + count, type: 'Motion' },
+        { id: Date()+4, image: abstract, name: 'Abstract' + count, type: 'Design' },
+        { id: Date()+5, image: handP, name: 'HandP' + count, type: 'Branding' },
+        { id: Date()+6, image: architect, name: 'Architect' + count, type: 'Motion' },
+        { id: Date()+7, image: calc, name: 'CalC' + count, type: 'Design' },
+        { id: Date()+8, image: sport, name: 'Sport' + count, type: 'Branding' },
+    ] as itemType[]
+}
+
 
 type MainReducerInitialValuesType = {
     items: itemType[]
@@ -31,7 +50,7 @@ type MainReducerInitialValuesType = {
 const initialState: MainReducerInitialValuesType = {
     items: initialItems(),
     activeItem: '',
-    activeFilter: 'Show All'
+    activeFilter: 'Design'
 }
 
 export const MainReducer = createSlice({

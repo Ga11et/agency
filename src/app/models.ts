@@ -1,6 +1,6 @@
 export type itemType = {
     id: string
-    type: string
+    type: filterType
     name: string
     image: string
 }

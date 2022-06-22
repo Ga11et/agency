@@ -11,8 +11,10 @@ type FormPropsType = {
 }
 export const FormContainer: FC<FormPropsType> = ({ }) => {
 
-    const initialValues = { type: 'Show All' as filterType }
     const dispatch = useAppDispatch()
+    const { activeFilter } = useAppSelector(state => state.mainReducer)
+
+    const initialValues = { type: activeFilter }
 
     return <>
         <Formik
@@ -20,10 +22,11 @@ export const FormContainer: FC<FormPropsType> = ({ }) => {
             onSubmit={(values) => {
                 dispatch(MainReducer.actions.setFilter(values.type))
             }}
+            enableReinitialize
         >
             {({ submitForm }) => {
                 return <>
-                    <Form className={css.form}>
+                    <Form className={css.form} tabIndex={0}>
                         <RadioInput text="Show All" name="type"
                             formSubmitting={submitForm}
                         />

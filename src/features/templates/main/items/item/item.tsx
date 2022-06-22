@@ -16,14 +16,20 @@ export const Item: FC<ItemPropsType> = ({ content }) => {
     const onclickHandler = () => {
         dispatch(MainReducer.actions.setActive(id))
     }
+    const spanClickHandler = () => {
+        dispatch(MainReducer.actions.setFilter(type))
+    }
 
     return <>
         <div className={`${css.container} ${activeItem === id ? css.active : ''}`}
             onClick={onclickHandler}
+            tabIndex={0}
         >
             <img src={image} className={css.image} alt={name} />
             <div className={css.info}>
-                <span className={css.type}>{type}</span>
+                <span className={css.type}
+                    onClick={spanClickHandler}
+                >{type}</span>
                 <h2 className={css.heading}>{name}</h2>
             </div>
         </div>

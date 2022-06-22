@@ -11,7 +11,9 @@ type RadioInputPropsType = {
 }
 export const RadioInput: FC<RadioInputPropsType> = ({ text, name, formSubmitting }) => {
     return <>
-        <label className={css.radio}>
+        <label className={css.radio} tabIndex={0}
+            
+            >
             <Field type='radio' className={css.input} name={name} value={text} 
                 onClick={() => formSubmitting()}
             />
