@@ -53,3 +53,23 @@
     text-align: center;
     margin-bottom: 50px;
 }
+
+@media screen and (max-width: 1440px) {
+    .content{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .nav{
+        display: none;
+    }
+    .contact{
+        display: none;
+    }
+    .top{
+        justify-content: center;
+    }
+    .paragraph{
+        width: 80%;
+    }
+}

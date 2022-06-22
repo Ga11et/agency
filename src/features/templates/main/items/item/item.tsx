@@ -20,8 +20,8 @@ export const Item: FC<ItemPropsType> = ({ content }) => {
         dispatch(MainReducer.actions.setFilter(type))
     }
 
-    return <>
-        <div className={`${css.container} ${activeItem === id ? css.active : ''}`}
+    return <div className={css.container}>
+        <div className={`${css.content} ${activeItem === id ? css.active : ''}`}
             onClick={onclickHandler}
             tabIndex={0}
         >
@@ -33,5 +33,5 @@ export const Item: FC<ItemPropsType> = ({ content }) => {
                 <h2 className={css.heading}>{name}</h2>
             </div>
         </div>
-    </>
+    </div>
 }

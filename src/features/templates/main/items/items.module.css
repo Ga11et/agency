@@ -4,3 +4,19 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
 }
+@media screen and (max-width: 1440px) {
+    .container{
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 90%;
+    }
+}
+@media screen and (max-width: 1080px) {
+    .container{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 700px) {
+    .container{
+        grid-template-columns: 1fr;
+    }
+}

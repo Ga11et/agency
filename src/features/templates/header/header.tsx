@@ -10,7 +10,7 @@ export const Header: FC<HeaderPropsType> = ({  }) => {
         <header className={css.container}>
             <div className={css.content}>
                 <div className={css.top}>
-                    <AgencySVG />
+                    <AgencySVG className={css.logo} />
                     <nav className={css.nav}>
                         <a href={'./'} className={css.link}>About</a>
                         <a href={'./'} className={css.link}>Services</a>

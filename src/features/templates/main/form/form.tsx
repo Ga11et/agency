@@ -1,10 +1,10 @@
 import { Formik, Form, Field } from "formik"
 import { FC } from "react"
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks"
-import { filterType } from "../../../../app/models"
 import { MainReducer } from "../../../../app/reducers/mainReducer"
 import css from './form.module.css'
 import { RadioInput } from "./radio/radio"
+import { ReactComponent as TriangleSVG } from '../../../../assets/triangle.svg'
 
 type FormPropsType = {
 
@@ -26,7 +26,7 @@ export const FormContainer: FC<FormPropsType> = ({ }) => {
         >
             {({ submitForm }) => {
                 return <>
-                    <Form className={css.form} tabIndex={0}>
+                    <Form className={css.desctopForm} tabIndex={0}>
                         <RadioInput text="Show All" name="type"
                             formSubmitting={submitForm}
                         />
@@ -42,6 +42,20 @@ export const FormContainer: FC<FormPropsType> = ({ }) => {
                         <RadioInput text="Motion" name="type"
                             formSubmitting={submitForm}
                         />
+                    </Form>
+                    <Form className={css.mobileForm} tabIndex={0}>
+                        <TriangleSVG className={css.triangle} />
+                        <Field component='select'
+                            name='type'
+                            className={css.select}
+                            onBlur={submitForm}
+                        >
+                            <option value='Show All'>Show All</option>
+                            <option value='Design'>Design</option>
+                            <option value='Branding'>Branding</option>
+                            <option value='Illustrations'>Illustrations</option>
+                            <option value='Motion'>Motion</option>
+                        </Field>
                     </Form>
                 </>
             }}
