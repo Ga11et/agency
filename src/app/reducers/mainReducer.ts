@@ -50,7 +50,7 @@ type MainReducerInitialValuesType = {
 const initialState: MainReducerInitialValuesType = {
     items: initialItems(),
     activeItem: '',
-    activeFilter: 'Design'
+    activeFilter: 'Show All'
 }
 
 export const MainReducer = createSlice({
